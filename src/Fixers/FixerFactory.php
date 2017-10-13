@@ -7,8 +7,9 @@ class FixerFactory
     const PHP = "PHP";
     const BEHAT = "FEATURE";
 
-    public static function getFixer($file) {
-        switch(self::getExtension($file)) {
+    public static function getFixer($file)
+    {
+        switch (self::getExtension($file)) {
             case self::PHP:
                 return (new PhpFixer())
                     ->setFile($file);

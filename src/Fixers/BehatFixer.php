@@ -6,13 +6,13 @@ class BehatFixer implements FixerInterface
 {
     private $behatIndentations = [
         'Feature' => 0,
-        'Background ' => 2,
+        'Background' => 2,
         'Scenario' => 2,
-        'Given ' => 4,
-        'When ' => 5,
-        'Then ' => 5,
-        'And ' => 6,
-        '|' => 7
+        'Given' => 4,
+        'When' => 5,
+        'Then' => 5,
+        'And' => 6,
+        '|' => 8
     ];
     /**
      * @var string
@@ -39,7 +39,7 @@ class BehatFixer implements FixerInterface
                 }
             }
             fclose($handle);
-            return new FixResult(false, '');
+            return new FixResult(false, 'File formatted correctly.'."\n");
         } else {
             return new FixResult(true, 'Error opening file: '.$this->file);
         }
@@ -52,10 +52,10 @@ class BehatFixer implements FixerInterface
      */
     private function formatLine($line)
     {
-        $line = ltrim($line);
+        $line = ltrim($line, ' ');
         foreach ($this->behatIndentations as $key=>$value) {
             if (0===strpos($line, $key)) {
-                return str_pad($line, $value, ' ', STR_PAD_LEFT);
+                return str_pad($line, $value +strlen($line), " ", STR_PAD_LEFT);
             }
         }
         return $line;

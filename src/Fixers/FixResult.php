@@ -40,5 +40,4 @@ class FixResult
     {
         return $this->message;
     }
-
 }

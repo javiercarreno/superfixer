@@ -14,16 +14,15 @@ class Application
 
     const COLOR_SUCCESSFUL = "\033[32m";
 
-    const COLOR_FAILURE = "\033[33m";
+    const COLOR_FAILURE = "\033[31m";
 
     public function run()
     {
         $fixers = $this->getFixersFromGitStatus();
 
-        if(count($fixers)>0) {
+        if (count($fixers)>0) {
             $this->fixFiles($fixers);
-        }
-        else {
+        } else {
             echo 'It seems that no file has changed (git status)';
         }
     }
@@ -35,11 +34,11 @@ class Application
     {
         $fixers=[];
         $output = shell_exec('git status -s -uno');
-        $outputLines = explode("\n",$output);
-        foreach($outputLines as $line) {
-            $line = substr($line,3,strlen($line)-3);
+        $outputLines = explode("\n", $output);
+        foreach ($outputLines as $line) {
+            $line = substr($line, 3, strlen($line)-3);
             $fixer = FixerFactory::getFixer($line);
-            if($fixer) {
+            if ($fixer) {
                 $fixers[] = $fixer;
             }
         }
@@ -54,11 +53,11 @@ class Application
         /**
          * @var $results FixResult[]
          */
-        foreach ($fixers as $fixer){
+        foreach ($fixers as $fixer) {
             echo "" . self::COLOR_FIXING . "fixing " .$fixer->getFile(). "" . self::COLOR_DEFAULT . "\n**\n";
             $result = $fixer->fix();
             $outputColor = self::COLOR_SUCCESSFUL;
-            if($result->isError()) {
+            if ($result->isError()) {
                 $outputColor = self::COLOR_FAILURE;
             }
             echo $outputColor.$result->getMessage(). self::COLOR_DEFAULT . "**\n";
