@@ -1,26 +1,17 @@
 <?php
 
+namespace Superfixer\Fixers;
 
 class FixerFactory
 {
     const PHP = "PHP";
     const BEHAT = "FEATURE";
-    /**
-     * @var string
-     */
-    private static $phpCsFixerPath;
 
-    /**
-     * @param string $path
-     */
-    public static function setPhpCsFixerPath($path) {
-        self::$phpCsFixerPath = $path;
-    }
-
-    public static function getFixer($file) {
-        switch(self::getExtension($file)) {
+    public static function getFixer($file)
+    {
+        switch (self::getExtension($file)) {
             case self::PHP:
-                return (new PhpFixer(self::$phpCsFixerPath))
+                return (new PhpFixer())
                     ->setFile($file);
             case self::BEHAT:
                 return (new BehatFixer())

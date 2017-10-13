@@ -1,2 +1,4 @@
 .idea/*
 php-cs-fixer-v2.phar
+vendor/*
+.php_cs.cache

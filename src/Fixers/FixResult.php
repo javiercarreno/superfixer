@@ -1,5 +1,6 @@
 <?php
 
+namespace Superfixer\Fixers;
 
 class FixResult
 {
@@ -39,5 +40,4 @@ class FixResult
     {
         return $this->message;
     }
-
 }
