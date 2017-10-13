@@ -1,5 +1,7 @@
 <?php
 
+namespace Superfixer\Fixers;
+
 interface FixerInterface
 {
 
@@ -8,6 +10,11 @@ interface FixerInterface
      * @return $this
      */
     public function setFile($file);
+
+    /**
+     * @return string
+     */
+    public function getFile();
 
     /**
      * @param string $file

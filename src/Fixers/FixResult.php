@@ -1,5 +1,6 @@
 <?php
 
+namespace Superfixer\Fixers;
 
 class FixResult
 {

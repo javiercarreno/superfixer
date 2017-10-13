@@ -1,0 +1,13 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "friendsofphp/php-cs-fixer": "^2.7"
+    },
+
+    "autoload": {
+        "psr-4": {
+            "Superfixer\\": "src",
+            "Tests\\": "tests"
+        }
+    }
+}
