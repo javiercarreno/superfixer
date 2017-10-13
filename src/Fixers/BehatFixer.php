@@ -58,7 +58,7 @@ class BehatFixer implements FixerInterface
                 return str_pad($line, $value +strlen($line), " ", STR_PAD_LEFT);
             }
         }
-        return $line;
+        return str_pad($line, 2 +strlen($line), " ", STR_PAD_LEFT);
     }
 
     /**
